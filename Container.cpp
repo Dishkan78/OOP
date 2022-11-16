@@ -18,8 +18,12 @@
 			SizeList--;
 		}
 		if (SizeList == 1)
+		{
+			SizeList--;
 			delete First;
-		SizeList--;
+		}
+			
+		
 	}
 
 	void container::In(ifstream& ifst)
@@ -60,21 +64,19 @@
 		{
 			ofst << i + 1 << ": ";
 			Temp->plant->Out(ofst);
+			ofst << "Consonants = " << Temp->plant->consonants() << endl;
 			Temp = Temp->Next;
 		}
 		ofst << endl;
-
-	}
-
-	void container::OutTree(ofstream& ofst)
-	{
-		Node* Temp = First;
-		for (int i = 0; i < SizeList; i++)
-		{
+		
+		for (int i = 0; i < SizeList; i++) {
+			
 			Temp->plant->OutTree(ofst);
 			Temp = Temp->Next;
 		}
+
 		ofst << endl;
+
 	}
 
 	void container::sort() {
@@ -91,7 +93,7 @@
 			flag = false;
 			for (int i = 0; i < (SizeList - 1); ++i)
 			{
-				if (current->plant->compare(*current->Next->plant))
+				if (compare(current->plant, current->Next->plant))
 				{
 					swap(current, current->Next);
 					flag = true;
@@ -104,7 +106,9 @@
 		} while (flag);
 	}
 
-	
+	bool container::compare(plant* first, plant* second) {
+		return first->consonants() > second->consonants();
+	}
 
 	void container::swap(Node* first, Node* second) {
 		plant* tmp;

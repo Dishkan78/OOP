@@ -5,41 +5,41 @@
 #include "Bush.h"
 #include "Flower.h"
 #include <string>
-using namespace std;
-#define WRONG_PLANT 0
+#include <iostream>
 #define WRONG_HABITAT 0
+#define WRONG_PLANT 0
+using namespace std;
 
 void plant::InData(ifstream& ifst) // ввод
 {
-	//getline(ifst, name, ' ');
-	ifst >> name;
-	string tmp = "";
-	getline(ifst, tmp, '\n');
-	if (tmp != "\0")
-		hbt = (plant::habitat)stoi(tmp);
-	else
-		hbt = (plant::habitat)WRONG_HABITAT;
-}
 
+	//getline(ifst, name, ' ');
+	int tmp;
+	ifst >> name >> tmp;
+	if (ifst.fail())
+	{
+		hbt = (plant::habitat)WRONG_HABITAT;
+	}
+	hbt = (plant::habitat)tmp;
+}
 void plant::Out(ofstream& ofst) // вывод	
-{	
+{
 	ofst << "Name = " << name << ", ";
 	switch (hbt)
 	{
 	case TUNDRA:
-		ofst << "Habitat = tundra" << endl;
+		ofst << "Habitat = tundra";
 		break;
 	case DESERT:
-		ofst << "Habitat = desert" << endl;
+		ofst << "Habitat = desert";
 		break;
 	case STEPPE:
-		ofst << "Habitat = steppe" << endl;
+		ofst << "Habitat = steppe";
 		break;
 	default:
-		ofst << "Wrong habitat " << endl;
+		ofst << "Wrong habitat" << endl;
 		break;
 	}
-	ofst << "Consonants = " << consonants() << endl;
 }
 
 	// ¬вод параметров растени€
@@ -48,14 +48,12 @@ void plant::Out(ofstream& ofst) // вывод
 		int k;
 		string tmp;
 		ifst >> tmp;
-
 		if (tmp == "\0")
 			return 0;
 		if (!isdigit(int(tmp.front())) || tmp.length() > 1)
 			k = WRONG_PLANT;
 		else
 			k = stoi(tmp);
-
 		switch (k) {
 		case 1:
 			pt = new tree;
@@ -67,31 +65,11 @@ void plant::Out(ofstream& ofst) // вывод
 			pt = new flower;
 			break;
 		default:
+			cout << "Wrong plant!" << endl;
 			return 0;
 		}
 		pt->InData(ifst);
+
 		return pt;
 	}
 	
-	bool plant::compare(plant second) {
-		return consonants() > second.consonants();
-	}
-
-	int plant::consonants() {
-
-		char consonants[40] = { 'B', 'b', 'C', 'c', 'D', 'd', 'F', 'f', 'G', 'g', 'H', 'h', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'P', 'p', 'Q', 'q',
-		'R', 'r', 'S', 's', 'T', 't', 'V', 'v', 'W', 'w', 'X', 'x', 'Z','z' };
-		int count = 0;
-		for (int i = 0; i < 50; i++)
-		{
-			if (name[i] == '\0')
-				break;
-			for (int j = 0; j < 40; j++)
-			{
-				if (name[i] == consonants[j]) {
-					count++;
-				}
-			}
-		}
-		return count;
-	}

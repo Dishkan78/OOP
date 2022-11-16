@@ -5,7 +5,6 @@
 
 		// ѕростейший контейнер на основе одномерного массива
 		class container {
-		public:
 			struct Node
 			{
 				plant* plant;
@@ -13,15 +12,17 @@
 				Node* Prev;
 			};
 
+			
+		public:
 			void In(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
 			container(); // инициализаци€ контейнера
 			~container(); // утилизаци€ контейнера
 			void sort();
-			
+			bool compare(plant* first, plant* second);
 			void swap(Node* first, Node* second);
-			void OutTree(ofstream& ofst);
 
+		private:
 			Node* First;
 			Node* Last;
 			size_t SizeList;

@@ -7,14 +7,14 @@ using namespace std;
 
 	// дерево
 	class tree : public plant {
-	public:
 		int age; // возраст
-	
+	public:
 		// переопредел€ем интерфейс класса
 		void InData(ifstream& ifst); // ввод
 		void Out(ofstream& ofst); // вывод
 		void OutTree(ofstream& ofst);
 		tree() {  } // создание без инициализации.
+		int consonants();
 	};
 
 

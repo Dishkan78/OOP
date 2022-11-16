@@ -3,7 +3,30 @@
 // геометрических фигурах
 #include "Tree.h"
 #include "Bush.h"
+#include "Flower.h"
 using namespace std;
+
+void plant::InData(ifstream& ifst) // ввод
+{
+	int tmp;
+	ifst >> tmp;
+	hbt = (plant::habitat)tmp;
+}
+void plant::Out(ofstream& ofst) // вывод	
+{
+	switch (hbt)
+	{
+	case TUNDRA:
+		ofst << "Habitat = tundra";
+		break;
+	case DESERT:
+		ofst << "Habitat = desert";
+		break;
+	case STEPPE:
+		ofst << "Habitat = steppe";
+		break;
+	}
+}
 
 	// ¬вод параметров растени€
 	plant* plant::In(ifstream& ifst) {
@@ -17,9 +40,14 @@ using namespace std;
 		case 2:
 			pt = new bush;
 			break;
+		case 3:
+			pt = new flower;
+			break;
 		default:
 			return 0;
 		}
 		pt->InData(ifst);
+
 		return pt;
 	}
+	

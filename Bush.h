@@ -3,7 +3,7 @@
 #include "Plant.h"
 
 	// кустарник
-class bush : public plant {
+class Bush : public Plant {
 	enum Month
 	{
 		JANUARY = 1,
@@ -19,11 +19,10 @@ class bush : public plant {
 		NOVEMBER,
 		DECEMBER,
 	};
-	Month mof; // Month of flowering - мес€ц цветени€
+	Month _mof; // Month of flowering - мес€ц цветени€
 public:
 	// переопредел€ем интерфейс класса
 	void InData(ifstream& ifst); // ввод
 	void Out(ofstream& ofst); // вывод
-	bush() {} // создание без инициализации.
-	int consonants();
+	Bush() {} // создание без инициализации.
 };

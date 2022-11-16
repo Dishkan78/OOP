@@ -1,37 +1,27 @@
 #include "Flower.h"
-#define WRONG_FLOWER 0
 
-
-
-void flower::InData(ifstream& ifst) {
+void Flower::InData(ifstream& ifst) 
+{
 	int temp;
 	ifst >> temp;
-	if (ifst.fail())
-	{
-		tof = (flower::type)WRONG_FLOWER;
-	}
-	else
-	{
-		tof = (flower::type)temp;
-	}
-	
+	_tof = (Flower::Type)temp;
+	Plant::InData(ifst);
 }
 
 // Output function for flower
-void flower::Out(ofstream& ofst) {
-	switch (tof)
+void Flower::Out(ofstream& ofst) 
+{
+	switch (_tof)
 	{
 	case (HOME):
-		ofst << "It is Flower: type = " << "Home" << endl;
+		ofst << "It is Flower: type = " << "Home" << ", ";
 		break;
 	case (GARDEN):
-		ofst << "It is Flower: type = " << "Garden" << endl;
+		ofst << "It is Flower: type = " << "Garden" << ", ";
 		break;
 	case (WILD):
-		ofst << "It is Flower: type = " << "Wild" << endl;
-		break;
-	default:
-		ofst << "Wrong type of flower" << endl;
+		ofst << "It is Flower: type = " << "Wild" << ", ";
 		break;
 	}
+	Plant::Out(ofst);
 }

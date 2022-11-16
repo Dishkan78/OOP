@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="Bush.cpp" />
     <ClCompile Include="Container.cpp" />
-    <ClCompile Include="Flower.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Tree.cpp" />
@@ -149,7 +148,6 @@
   <ItemGroup>
     <ClInclude Include="Bush.h" />
     <ClInclude Include="Container.h" />
-    <ClInclude Include="Flower.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Tree.h" />
   </ItemGroup>

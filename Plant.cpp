@@ -5,28 +5,6 @@
 #include "Bush.h"
 using namespace std;
 
-void plant::InData(ifstream& ifst) // ввод
-{
-	int tmp;
-	ifst >> tmp;
-	hbt = (plant::habitat)tmp;
-}
-void plant::Out(ofstream& ofst) // вывод	
-{
-	switch (hbt)
-	{
-	case TUNDRA:
-		ofst << "Habitat = tundra";
-		break;
-	case DESERT:
-		ofst << "Habitat = desert";
-		break;
-	case STEPPE:
-		ofst << "Habitat = steppe";
-		break;
-	}
-}
-
 	// ¬вод параметров растени€
 	plant* plant::In(ifstream& ifst) {
 		plant* pt;
@@ -43,6 +21,6 @@ void plant::Out(ofstream& ofst) // вывод
 			return 0;
 		}
 		pt->InData(ifst);
-
 		return pt;
 	}
+	

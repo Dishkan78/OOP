@@ -26,5 +26,4 @@
 		void InData(ifstream& ifst); // ввод
 		void Out(ofstream& ofst); // вывод
 		bush() {} // создание без инициализации.
-		int consonants();
 	};
